@@ -91,7 +91,7 @@
           transaction.update(
             doc(db, "super", auth.currentUser.email, "online", "lotto"),
             {
-              agents: arrayUnion({
+              dealers: arrayUnion({
                 email: email,
                 name: name,
               }),
