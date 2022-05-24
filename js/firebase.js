@@ -140,33 +140,30 @@ async function addDOMfunc(emails) {
 
 async function daySale(mail) {
   let { date } = await fetchDate();
-  const daySale = await getDoc(
-    doc(db, "dealers", mail, "offline", "lotto", "sale", date)
-  );
-  const dayIndirectSale = await getDoc(
-    doc(db, "dealers", mail, "agentsale", date)
-  );
+  const directref = doc(db, "dealers", email, "offline", "lotto", "sale", date);
+  const docSnap1 = await getDoc(directref);
+  const indirectref = doc(db, "dealers", email, "agentsale", date);
+  const docSnap2 = await getDoc(indirectref);
+  let total = 0;
+  if (!docSnap1.exists() && !docSnap2.exists()) {
+    document.getElementById("dayTotSale").innerHTML = "No sale on " + date;
+  } else {
+    if (docSnap1.exists()) {
+      const saleD = docSnap1.data();
+      let keys = Object.keys(saleD);
+      keys.forEach((dtime) => {
+        total += saleD[dtime];
+      });
+    }
+    if (docSnap2.exists()) {
+      const saleI = docSnap2.data();
+      total += saleI.sale;
+    }
 
-  if (!daySale.exists() && !dayIndirectSale.exists()) {
     document.getElementById(`showBtn-${mail}`).style.display = "none";
     document.getElementById(`day-sale-${mail}`).style.display = "";
-    document.getElementById(`day-sale-${mail}`).innerText = "No sale today";
-    return;
+    document.getElementById(`day-sale-${mail}`).innerText = "Today: " + total;
   }
-  let totDSale = 0;
-  if (daySale.exists()) {
-    let keys = Object.keys(daySale.data());
-    keys.forEach((dtime) => {
-      totDSale += daySale[dtime];
-    });
-  }
-  if (dayIndirectSale.exists()) {
-    totDSale += dayIndirectSale.data().sale;
-  }
-  const dayTSale = totDSale;
-  document.getElementById(`showBtn-${mail}`).style.display = "none";
-  document.getElementById(`day-sale-${mail}`).style.display = "";
-  document.getElementById(`day-sale-${mail}`).innerText = "Today: " + dayTSale;
 }
 
 async function addCred(sEmail, u_email, amount) {
