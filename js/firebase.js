@@ -140,9 +140,9 @@ async function addDOMfunc(emails) {
 
 async function daySale(mail) {
   let { date } = await fetchDate();
-  const directref = doc(db, "dealers", email, "offline", "lotto", "sale", date);
+  const directref = doc(db, "dealers", mail, "offline", "lotto", "sale", date);
   const docSnap1 = await getDoc(directref);
-  const indirectref = doc(db, "dealers", email, "agentsale", date);
+  const indirectref = doc(db, "dealers", mail, "agentsale", date);
   const docSnap2 = await getDoc(indirectref);
   let total = 0;
   if (!docSnap1.exists() && !docSnap2.exists()) {
