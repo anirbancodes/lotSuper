@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super | MyLot</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <div style="display: flex; justify-content: space-between">
+        <h2>>> MyLot</h2>
+        <h3 class="margin-left-pc" id="time-counter"></h3>
+      </div>
+      <div class="header-user">
+        <p class="mob-margin-top-less-15" id="profile-name"></p>
+        <p class="mob-margin-top-less-15">
+          Credits: <span id="user-credit"></span>
+        </p>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-evenly">
+      <div class="header-option header-option-active" id="header-dealers">
+        <p>Dealers</p>
+      </div>
+      <!-- <div class="header-option" id="header-agents">
+        <p>Agents</p>
+      </div> -->
+      <div class="header-option" id="header-credits">
+        <p>Credits</p>
+      </div>
+    </div>
+    <div id="dealers-div">
+      <!-- <div class="search-box">
+        <input type="email" placeholder="Search for client" />
+      </div>
+      <br /> -->
+      <div style="height: 20px"></div>
+      <div class="clients" id="dealers"></div>
+    </div>
+    <br />
+
+    <div style="height: 100px"></div>
+    <div style="display: flex; justify-content: space-between; padding: 0 10px">
+      <button class="btn-submit" id="logoutBtn">Log out</button>
+      <a class="btn-submit" href="/pages/add-dealer.html">Add Dealer</a>
+    </div>
+    <br />
+    <div style="display: flex; padding: 0 10px; flex-direction: column">
+      <a class="btn-submit" href="/pages/add.html">Pay for credit</a>
+    </div>
+    <br /><br />
+    <div>
+      <p style="text-align: center; font-size: 10px">
+        © 2022, MyLot - QuickPlay Technologies LLP. All rights reserved.
+      </p>
+    </div>
+    <script src="/style.js"></script>
+    <script type="module" src="./js/firebase.js"></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DealerOnline | MyLot</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <div style="display: flex; justify-content: space-between">
+        <h2>>> PlayLotto</h2>
+        <h3 class="margin-left-pc" id="time-counter"></h3>
+      </div>
+      <div class="header-user">
+        <p class="mob-margin-top-less-15" id="profile-name"></p>
+        <p class="mob-margin-top-less-15">
+          Credits: <span id="user-credit"></span>
+        </p>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-evenly">
+      <div class="header-option" id="header-agents">
+        <p>Agents</p>
+      </div>
+      <div class="header-option header-option-active" id="header-clients">
+        <p>Clients</p>
+      </div>
+      <div class="header-option" id="header-credits">
+        <p>Credits</p>
+      </div>
+    </div>
+    <br />
+    <div id="agents-div">
+      <!-- <div class="search-box">
+        <input type="email" placeholder="Search for client" />
+      </div>
+      <br /> -->
+      <div class="clients" id="clients"></div>
+    </div>
+
+    <div style="height: 100px"></div>
+    <div style="display: flex; justify-content: space-between; padding: 0 10px">
+      <button class="btn-submit" id="logoutBtn">Log out</button>
+      <a class="btn-submit" href="https://do.mylotto.in">Add Agent</a>
+    </div>
+    <br />
+    <div style="display: flex; padding: 0 10px; flex-direction: column">
+      <a class="btn-submit" href="/pages/add.html">Pay for credit</a>
+      <br />
+      <a class="btn-submit" href="https://d.mylotto.in">Offline System</a>
+    </div>
+    <br /><br />
+    <div>
+      <p style="text-align: center; font-size: 10px">
+        © 2022, MyLotto Technologies Ltd. All rights reserved.
+      </p>
+    </div>
+    <script src="../style.js"></script>
+
+    <script type="module" src="../js/time.js"></script>
+    <script type="module" src="./firebase.js"></script>
+  </body>
+</html>

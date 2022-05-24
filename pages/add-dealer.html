@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dealer | MyLot</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <style>
+    input {
+      margin-bottom: 20px;
+    }
+  </style>
+  <body
+    style="
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    "
+  >
+    <div class="header">
+      <div style="display: flex; justify-content: space-between">
+        <h2>>> MyLot <<</h2>
+        <h3 class="margin-left-pc" id="time-counter"></h3>
+      </div>
+    </div>
+    <input type="email" id="email" placeholder="email" />
+
+    <input type="text" id="password" placeholder="password" />
+
+    <input type="number" id="contact" placeholder="contact" />
+    <input type="text" id="name" placeholder="name" />
+    <br /><br />
+    <a class="btn-submit" id="createdealer">Create Dealer</a>
+    <br /><br />
+    <a class="btn-submit" href="/index.html">Back</a>
+    <br /><br />
+    <a class="btn-submit" id="logoutBtn">Logout</a>
+  </body>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import {
+      getAuth,
+      signOut,
+      createUserWithEmailAndPassword,
+    } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+    import { fc } from "/js/c.js";
+    import {
+      doc,
+      runTransaction,
+      getFirestore,
+      arrayUnion,
+    } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+    let createdealer = document.getElementById("createdealer");
+
+    const app = initializeApp(fc);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    createdealer.addEventListener("click", async (e) => {
+      let downlineDoc = false;
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+      let contact = document.getElementById("contact").value;
+      let name = document.getElementById("name").value;
+
+      try {
+        await runTransaction(db, async (transaction) => {
+          console.log("0");
+          const dealerCollection = await transaction.get(
+            doc(db, "dealers", email)
+          );
+          console.log("1");
+          if (dealerCollection.exists()) {
+            alert("already present" + email);
+            return;
+          }
+          console.log("1");
+          transaction.set(doc(db, "dealers", email), {
+            contact: contact,
+            name: name,
+            sEmail: auth.currentUser.email,
+            credit: 0,
+            active: false,
+          });
+          console.log("1");
+
+          transaction.update(
+            doc(db, "super", auth.currentUser.email, "online", "lotto"),
+            {
+              agents: arrayUnion({
+                email: email,
+                name: name,
+              }),
+            },
+            { merge: true }
+          );
+        });
+        console.log("Agent Doc created");
+        downlineDoc = true;
+      } catch (e) {
+        downlineDoc = false;
+        alert("Transaction failed: ", e);
+        console.error(e);
+      }
+
+      const createDealerID = async () => {
+        let secondaryApp = initializeApp(fc, "secondary");
+
+        const auth1 = getAuth(secondaryApp);
+
+        await createUserWithEmailAndPassword(auth1, email, password)
+          .then(signOut(auth1))
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error(error);
+            console.log(errorCode, errorMessage);
+          });
+        alert("created ID" + email);
+      };
+      if (downlineDoc == true) createDealerID();
+    });
+  </script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Credits-Dealer | MyLotto</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <style>
+    body {
+      font-family: "lato", sans-serif;
+    }
+    .card-inner {
+      display: flex;
+      justify-content: space-between;
+      margin-top: -25px;
+      margin-bottom: -10px;
+    }
+    .m-b-5 {
+      margin-bottom: 10px;
+    }
+    .p-1-5 {
+      padding: 1px 5px;
+    }
+  </style>
+  <body>
+    <div class="header">
+      <div style="display: flex; justify-content: space-between">
+        <h2>>> PlayLotto</h2>
+      </div>
+      <div class="header-user">
+        <p class="mob-margin-top-less-15" id="profile-name"></p>
+        <p class="mob-margin-top-less-15">
+          Credits: <span id="user-credit"></span>
+        </p>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-evenly">
+      <div class="header-option" id="header-dealers">
+        <p>Dealers</p>
+      </div>
+      <!-- <div class="header-option" id="header-clients">
+        <p>Clients</p>
+      </div> -->
+      <div class="header-option header-option-active" id="header-credits">
+        <p>Credits</p>
+      </div>
+    </div>
+    <br />
+    <div style="padding: 10px 20px">
+      <input type="date" id="date" />
+      <select
+        name="agent-client"
+        id="agent-client"
+        class="btn-submit"
+        style="color: white; background-color: orangered"
+      >
+        <option value="dealers">Dealers</option>
+        <option value="quickplay">QuickPlay</option>
+      </select>
+      <br /><br />
+
+      <a style="text-align: center" class="btn-submit" id="showBtn">Show</a>
+      <br /><br />
+      <div id="credits-list"></div>
+    </div>
+    <p id="comment-text" style="text-align: center"></p>
+
+    <div style="height: 50px"></div>
+
+    <br /><br />
+    <div>
+      <p style="text-align: center; font-size: 10px">
+        © 2022, MyLot - QuickPlay Technologies Ltd. All rights reserved.
+      </p>
+    </div>
+    <script src="../style.js"></script>
+    <script type="module" src="/credits/firebase.js"></script>
+  </body>
+</html>
