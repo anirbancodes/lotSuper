@@ -39,7 +39,7 @@ async function saleBody(email, date) {
   document.getElementById("dayTotSale").innerHTML = "-";
   const directref = doc(db, "dealers", email, "offline", "lotto", "sale", date);
   const docSnap1 = await getDoc(directref);
-  console.log(11);
+
   const indirectref = doc(db, "dealers", email, "agentsale", date);
   const docSnap2 = await getDoc(indirectref);
   let total = 0;
@@ -47,7 +47,6 @@ async function saleBody(email, date) {
     document.getElementById("dayTotSale").innerHTML = "No sale on " + date;
   } else {
     if (docSnap1.exists()) {
-      console.log(1);
       const saleD = docSnap1.data();
       let keys = Object.keys(saleD);
       keys.forEach((dtime) => {
@@ -55,7 +54,6 @@ async function saleBody(email, date) {
       });
     }
     if (docSnap2.exists()) {
-      console.log(2);
       const saleI = docSnap2.data();
       total += saleI.sale;
     }
