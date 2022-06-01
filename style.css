@@ -66,6 +66,7 @@ p {
   font-weight: 500;
   -webkit-transition: all 300ms linear;
   transition: all 300ms linear;
+color: #4f718a;
 }
 .btn-submit {
   outline: none;
@@ -170,6 +171,7 @@ td > span {
   color: orangered;
   border-radius: 20px;
   padding: 0 8px;
+  cursor:pointer;
 }
 @media only screen and (max-width: 600px) {
   .pc {
