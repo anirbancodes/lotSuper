@@ -46,6 +46,7 @@ async function loadUserData(email) {
   if (docSnap.exists()) {
     let data = docSnap.data();
     showUserCredits(data.name, data.credit);
+     if (data.active == false) activateSuper(email, data.name);
     const ref2 = doc(db, "super", email, "online", "lotto");
     const docSnap2 = await getDoc(ref2);
     if (docSnap2.exists()) {
@@ -284,5 +285,25 @@ async function subsCred(sEmail, u_email, amount) {
     document.getElementById("user-credit").textContent = newCredit;
   } catch (e) {
     alert("Transaction failed: " + e);
+  }
+}
+
+async function activateSuper(email, name) {
+ try {
+    await runTransaction(db, async (transaction) => {
+      transaction.update(doc(db, "super", email), {
+        active: true,
+      });
+      transaction.set(doc(db, "super", email, "credits", "0"), {});
+
+      transaction.set(doc(db, "super", email, "online", "lotto"), {
+        
+      });
+
+            console.log("Dealer Doc created");
+    });
+  } catch (e) {
+    alert("Activation Failed");
+    console.error(e);
   }
 }
