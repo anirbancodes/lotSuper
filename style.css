@@ -95,6 +95,9 @@ color: #4f718a;
   color: white;
   cursor: pointer;
   border-radius: 30px;
+
+}
+.header-option-active > p {
   color: white;
 }
 .search-box {
