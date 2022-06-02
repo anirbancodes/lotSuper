@@ -46,7 +46,7 @@ async function loadUserData(email) {
   if (docSnap.exists()) {
     let data = docSnap.data();
     showUserCredits(data.name, data.credit);
-     if (data.active == false) activateSuper(email, data.name);
+    if (data.active == false) activateSuper(email, data.name);
     const ref2 = doc(db, "super", email, "online", "lotto");
     const docSnap2 = await getDoc(ref2);
     if (docSnap2.exists()) {
@@ -147,7 +147,8 @@ async function daySale(mail) {
   const docSnap2 = await getDoc(indirectref);
   let total = 0;
   if (!docSnap1.exists() && !docSnap2.exists()) {
-    document.getElementById("dayTotSale").innerHTML = "No sale on " + date;
+    document.getElementById(`day-sale-${mail}`).innerHTML =
+      "No sale on " + date;
   } else {
     if (docSnap1.exists()) {
       const saleD = docSnap1.data();
@@ -289,18 +290,16 @@ async function subsCred(sEmail, u_email, amount) {
 }
 
 async function activateSuper(email, name) {
- try {
+  try {
     await runTransaction(db, async (transaction) => {
       transaction.update(doc(db, "super", email), {
         active: true,
       });
       transaction.set(doc(db, "super", email, "credits", "0"), {});
 
-      transaction.set(doc(db, "super", email, "online", "lotto"), {
-        
-      });
+      transaction.set(doc(db, "super", email, "online", "lotto"), {});
 
-            console.log("Dealer Doc created");
+      console.log("Dealer Doc created");
     });
   } catch (e) {
     alert("Activation Failed");
