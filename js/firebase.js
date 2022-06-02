@@ -147,6 +147,7 @@ async function daySale(mail) {
   const docSnap2 = await getDoc(indirectref);
   let total = 0;
   if (!docSnap1.exists() && !docSnap2.exists()) {
+    document.getElementById(`day-sale-${mail}`).style.display = "";
     document.getElementById(`day-sale-${mail}`).innerHTML =
       "No sale on " + date;
   } else {
