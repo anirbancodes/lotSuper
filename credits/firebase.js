@@ -39,9 +39,10 @@ function showUserCredits(name, credit) {
   document.getElementById("user-credit").textContent = credit;
 }
 async function historyTable(email, date, AC) {
-  if (!date) {
-    //
-  }
+  // if (!date) {
+  //   let now = new Date();
+  //   date = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
+  // }
   document.getElementById("credits-list").innerHTML = "";
   document.getElementById("comment-text").innerText = "";
   const ref = doc(db, "super", email, "credits", date);
@@ -82,13 +83,15 @@ const showBtn = document.getElementById("showBtn");
 showBtn.addEventListener("click", () => {
   let date = document.getElementById("date").value;
   let AC = document.getElementById("agent-client").value;
-  let i1 = date.indexOf("-"),
-    i2 = date.lastIndexOf("-");
-  date =
-    date.substring(0, i1 + 1) +
-    (Number(date.substring(i1 + 1, i2)) / 10) * 10 +
-    "-" +
-    (Number(date.substring(i2 + 1, i2 + 3)) / 10) * 10;
+  if (date) {
+    let i1 = date.indexOf("-"),
+      i2 = date.lastIndexOf("-");
+    date =
+      date.substring(0, i1 + 1) +
+      (Number(date.substring(i1 + 1, i2)) / 10) * 10 +
+      "-" +
+      (Number(date.substring(i2 + 1, i2 + 3)) / 10) * 10;
+  }
   if (!date) {
     let now = new Date();
     let date1 =
