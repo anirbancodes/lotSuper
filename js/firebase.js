@@ -75,7 +75,7 @@ async function drawClientList(data) {
       `</p>
       <p style="display: none;" id="day-sale-` +
       email +
-      `">Day Sale: 0</p>
+      `">Day Sale: </p>
       <p class="hollow-btn-text" id="showBtn-` +
       email +
       `">Show Day Sale</p>
@@ -149,8 +149,7 @@ async function daySale(mail) {
   if (!docSnap1.exists() && !docSnap2.exists()) {
     document.getElementById(`showBtn-${mail}`).style.display = "none";
     document.getElementById(`day-sale-${mail}`).style.display = "";
-    document.getElementById(`day-sale-${mail}`).innerHTML =
-      "No sale on " + date;
+    document.getElementById(`day-sale-${mail}`).innerHTML = "Today: ₹ 0";
   } else {
     if (docSnap1.exists()) {
       const saleD = docSnap1.data();
@@ -166,7 +165,7 @@ async function daySale(mail) {
 
     document.getElementById(`showBtn-${mail}`).style.display = "none";
     document.getElementById(`day-sale-${mail}`).style.display = "";
-    document.getElementById(`day-sale-${mail}`).innerText = "Today: " + total;
+    document.getElementById(`day-sale-${mail}`).innerText = "Today: ₹ " + total;
   }
 }
 
