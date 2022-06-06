@@ -84,15 +84,15 @@ async function drawClientList(data) {
       email +
       `</p>
     <div style="display: flex; justify-content: space-around">
-      <button class="btn-submit" id="add-` +
+      <button class="btn-plum" id="add-` +
       email +
-      `">+</button>
-      <button class="btn-submit" id="subs-` +
+      `"><span style="font-size:13px">Send</span></button>
+      <button class="btn-plum" id="subs-` +
       email +
-      `">-</button>
-      <button class="btn-submit" id="details-` +
+      `"><span style="font-size:13px">Recieve</span></button>
+      <button class="btn-details" id="details-` +
       email +
-      `">Details</button>
+      `"><span style="font-size:13px">Details</span></button>
     </div>
     <input type="number" class="cred-amt"  placeholder="0" id="credAmt-` +
       email +

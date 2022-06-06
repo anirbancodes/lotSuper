@@ -80,6 +80,79 @@ p {
   border-radius: 20px;
   background-image: linear-gradient(138deg, var(--red), var(--yellow));
 }
+.btn-plum {
+  outline: none;
+  border: 0;
+  /* height: 50px;
+     width: 160px; */
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  /* padding: 12px 40px; */
+  padding: 12px 20px;
+  width: max-content;
+  border-radius: 20px;
+  background-color: #f8ceec;
+  background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+}
+/* .btn-plum:hover { */
+.btn-orange {
+  outline: none;
+  border: 0;
+  /* height: 50px;
+     width: 160px; */
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 12px 40px;
+  border-radius: 20px;
+  background-image: linear-gradient(138deg, var(--red), var(--yellow));
+}
+
+.fs-16 {
+  font-size: 16px;
+  padding: 12px 40px;
+}
+
+.btn-violet {
+  width: max-content;
+  padding: 8px 20px;
+  font-size: 13px;
+  outline: none;
+  color: #4f718a;
+  background-color: rgb(113, 16, 113);
+  color: #fee1f6;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+}
+.btn-details {
+  width: max-content;
+  padding: 8px 20px;
+  font-size: 13px;
+  outline: none;
+  color: #4f718a;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(241, 241, 241);
+}
+
+.btn-short {
+  width: max-content;
+  padding: 8px 20px;
+  font-size: 13px;
+  outline: none;
+  color: #4f718a;
+  background-color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+}
+.btn-short:hover {
+  color: orangered;
+  box-shadow: plum 0px 18px 50px -10px;
+}
 .header-option {
   width: 25%;
   text-align: center;
