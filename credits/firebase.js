@@ -23,6 +23,18 @@ onAuthStateChanged(auth, (user) => {
     window.location = "/pages/login.html";
   }
 });
+
+const logoutBtn = document.getElementById("logoutBtn");
+logoutBtn.addEventListener("click", (e) => {
+  signOut(auth)
+    .then(() => {
+      //logout
+    })
+    .catch((error) => {
+      alert(error);
+    });
+});
+
 async function loadUserData(email) {
   const ref = doc(db, "super", email);
   const docSnap = await getDoc(ref);
