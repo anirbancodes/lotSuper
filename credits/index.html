@@ -28,7 +28,7 @@
   <body>
     <div class="header">
       <div style="display: flex; justify-content: space-between">
-        <h2 style="font-family: Poppins">>> MyLot</h2>
+        <h2 style="font-family: Poppins; color: white">>> MyLot</h2>
       </div>
       <div class="header-user">
         <p class="mob-margin-top-less-15" id="profile-name"></p>
@@ -50,17 +50,17 @@
     </div>
     <br />
     <div style="padding: 10px 20px">
-      <input type="date" style="width: 120px" id="date" />
+      <input type="date" style="width: 100px" id="date" />&emsp;
       <select
         name="agent-client"
         id="agent-client"
         class="btn-submit"
-        style="color: white; background-color: orangered"
+        style="color: white; background-color: orangered; padding: 10px 20px"
       >
         <option value="dealers">Dealers</option>
         <option value="quickplay">QuickPlay</option>
       </select>
-      <br /><br />
+      <div style="height: 15px"></div>
 
       <a style="text-align: center" class="btn-submit" id="showBtn">Show</a>
       <br /><br />
@@ -68,12 +68,19 @@
     </div>
     <p id="comment-text" style="text-align: center"></p>
 
-    <div style="height: 50px"></div>
+    <div style="height: 100px"></div>
+    <div style="display: flex; justify-content: space-between; padding: 0 10px">
+      <button class="btn-short" id="logoutBtn">Log out</button>
+      <a class="btn-short" href="/pages/add-dealer.html"
+        >Create New Dealer&nbsp;&nbsp;&#x2192;</a
+      >
+    </div>
+    <br />
 
-    <br /><br />
     <div>
       <p style="text-align: center; font-size: 10px">
-        © 2022, MyLot - QuickPlay Technologies Ltd. All rights reserved.
+        © 2022, MyLot - QuickPlay Technologies LLP.<br />
+        All rights reserved.
       </p>
     </div>
     <script src="../style.js"></script>
