@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sale-Dealer | MyLotto</title>
+    <title>Sale-Dealer | MyLot</title>
     <link rel="stylesheet" href="../style.css" />
   </head>
 
@@ -63,12 +63,12 @@
   <body>
     <div class="header">
       <div style="display: flex; justify-content: space-between">
-        <h2>>> MyLot<<</h2>
+        <h2 style="color: white">>> MyLot<<</h2>
       </div>
     </div>
 
     <div id="sale-div" style="padding: 0px 10px">
-      <h4 id="dealer-name"></h4>
+      <h4 style="color: cadetblue" id="dealer-name"></h4>
       <div style="display: flex; justify-content: center">
         <input id="date" type="date" />
       </div>
@@ -84,14 +84,26 @@
       <p style="text-align: center; font-size: 18px">
         <strong>Total Sale: <span id="dayTotSale">0</span></strong>
       </p>
+      <p style="text-align: center; font-size: 18px">
+        <strong>Total Win: <span id="dayTotWin">0</span></strong>
+      </p>
     </div>
 
     <div style="height: 50px"></div>
 
     <br /><br />
-    <div>
-      <p style="text-align: center; font-size: 10px; color: orangered">
-        © 2022, MyLot - QuickPlay Technologies LLP. All rights reserved.
+    <div style="padding: 0 10px">
+      <p
+        style="
+          font-size: 10px;
+
+          text-align: justify;
+        "
+      >
+        <span style="color: orangered"
+          >© 2022, MyLot - QuickPlay Technologies LLP.</span
+        >
+        All rights reserved.
       </p>
     </div>
     <script type="module" src="/details/firebase.js"></script>

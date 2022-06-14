@@ -45,6 +45,7 @@ async function saleBody(email, date) {
   let total = 0;
   if (!docSnap1.exists() && !docSnap2.exists()) {
     document.getElementById("dayTotSale").innerHTML = "No sale on " + date;
+    document.getElementById("dayTotWin").innerHTML = "0";
   } else {
     if (docSnap1.exists()) {
       const saleD = docSnap1.data();
@@ -79,6 +80,25 @@ async function saleBody(email, date) {
     </li>`;
       }); */
     document.getElementById("dayTotSale").innerHTML = total;
+    const creditRef = doc(
+      db,
+      "dealers",
+      email,
+      "offline",
+      "lotto",
+      "credits",
+      date
+    );
+    const docSnap3 = await getDoc(creditRef);
+    if (docSnap3.exists()) {
+      let credTot = 0;
+      const credD = docSnap3.data();
+      let keys1 = Object.keys(credD);
+      keys1.forEach((dtime) => {
+        credTot += credD[dtime];
+      });
+      document.getElementById("dayTotWin").innerHTML = credTot;
+    }
   }
 }
 const showBtn = document.getElementById("showBtn");
